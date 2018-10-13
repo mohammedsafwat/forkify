@@ -38,7 +38,7 @@ const controlSearch = async () => {
             clearLoader();
             searchView.renderResults(state.search.result);
         } catch (err) {
-            alert('Something wrong with the search...');
+            alert(`Something wrong with the search: ${err}`);
             clearLoader();
         }
     }
@@ -76,17 +76,20 @@ const controlRecipe = async () => {
         state.recipe = new Recipe(id);
 
         try {
-            // Get recipe data
+            // Get recipe data and parse ingredients
             await state.recipe.getRecipe();
-    
+            
+            // Parse recipe ingredients
+            state.recipe.parseIngredient();
+            
             // Calcualte servings and time
             state.recipe.calcTime();
             state.recipe.calcServings();
-    
+            
             // Render recipe
             console.log(state.recipe);
         } catch (err) {
-            alert('Errorr processing recipe');
+            alert(`Error processing recipe: ${err}`);
         }
     }
 };
