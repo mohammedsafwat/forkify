@@ -1,7 +1,6 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import ShoppingList from './models/ShoppingList';
-
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as shoppingListView from './views/shoppingListView';
